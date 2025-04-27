@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Meu Anjo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Adicionar link para Google Fonts aqui se necessário -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="scrolling-text-container fixed-top">
+        <div class="scrolling-text">
+            <!-- Texto será duplicado via JS para efeito infinito -->
+            <span>Te amo muito meu anjo ❤️</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="letter-container" id="letterContainer">
+            <!-- Usaremos um ícone de envelope ou imagem aqui -->
+            <div class="envelope" id="envelope">
+                <!-- Pode ser um SVG ou uma imagem -->
+                <img src="envelope.svg" alt="Carta de Amor"/>
+                <!-- Ou um SVG para melhor escalabilidade e estilo -->
+                <!-- <svg>...</svg> -->
+            </div>
+        </div>
+
+        <!-- Modal/Conteúdo da Carta (inicialmente oculto) -->
+        <div class="letter-content-modal" id="letterModal">
+            <div class="letter-paper">
+                <button class="close-button" id="closeButton">&times;</button>
+                <h2>Meu Amor,</h2>
+                <p>
+                    <!-- O TEXTO DA CARTA SERÁ INSERIDO AQUI -->
+                    Este é um espaço reservado para a sua linda mensagem de amor.
+                    Você poderá editar este texto facilmente no arquivo HTML.
+                    Escreva aqui tudo o que seu coração deseja expressar...
+                    Cada palavra será um reflexo do seu carinho.
+                </p>
+                <p>Com todo meu amor,</p>
+                <p>[Seu Nome ou Apelido Carinhoso]</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="scrolling-text-container fixed-bottom">
+        <div class="scrolling-text reverse">
+            <!-- Texto será duplicado via JS para efeito infinito -->
+            <span>Te amo muito meu anjo ❤️</span>
+        </div>
+    </footer>
+
+    <!-- Opcional: Elemento de áudio -->
+    <audio id="backgroundMusic" loop>
+        <!-- IMPORTANTE: Substitua 'sua-musica.mp3' pelo caminho do seu arquivo de música -->
+        <source src="sua-musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <button id="toggleMusic">Tocar Música</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

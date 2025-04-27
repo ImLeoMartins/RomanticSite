@@ -1,0 +1,266 @@
+/* Estilos Gerais */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* Fonte padrão fallback */
+    background: linear-gradient(to bottom, #fff0f5, #ffffff); /* Gradiente suave de Rosa Lavanda para Branco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevenir scroll horizontal geral */
+}
+
+/* Cabeçalho e Rodapé Fixos com Texto Rolante */
+.scrolling-text-container {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255, 182, 193, 0.8); /* Rosa claro com transparência */
+    color: #5d3a3a; /* Cor de texto mais escura para contraste */
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: 'Great Vibes', cursive; /* Fonte elegante para o texto rolante */
+    font-size: 1.5em;
+}
+
+.fixed-top {
+    top: 0;
+    left: 0;
+}
+
+.fixed-bottom {
+    bottom: 0;
+    left: 0;
+}
+
+.scrolling-text {
+    display: inline-block;
+    padding-left: 100%; /* Começa fora da tela à direita */
+    animation: scroll-left 20s linear infinite;
+}
+
+.scrolling-text.reverse {
+    animation: scroll-right 20s linear infinite;
+    padding-right: 100%; /* Começa fora da tela à esquerda */
+    padding-left: 0;
+}
+
+.scrolling-text span {
+    display: inline-block;
+    padding: 0 2em; /* Espaçamento entre repetições */
+}
+
+/* Animações de Rolagem */
+@keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes scroll-right {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+/* Container da Carta */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    padding-top: 60px; /* Espaço para o cabeçalho */
+    padding-bottom: 60px; /* Espaço para o rodapé */
+}
+
+.letter-container {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.envelope img {
+    width: 100px; /* Tamanho inicial do ícone */
+    height: auto;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+    transition: filter 0.3s ease;
+    fill: #d14a6f; /* Cor rosa forte para o SVG (ajuste conforme necessário) */
+}
+
+.letter-container:hover {
+    transform: scale(1.1);
+}
+
+.letter-container:hover .envelope img {
+    filter: drop-shadow(4px 6px 10px rgba(0,0,0,0.3));
+}
+
+/* Modal da Carta */
+.letter-content-modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escurecido */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.letter-content-modal.show {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease;
+}
+
+.letter-paper {
+    background-color: #fffaf0; /* Cor de papel antigo/creme */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    font-family: 'Dancing Script', cursive; /* Fonte cursiva para a carta */
+    font-size: 1.4em; /* Tamanho de fonte maior para leitura */
+    color: #4b3832; /* Cor de texto marrom escuro */
+    line-height: 1.6;
+    transform: scale(0.8);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.letter-content-modal.show .letter-paper {
+    transform: scale(1);
+}
+
+.letter-paper h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #d14a6f; /* Cor rosa mais forte para o título */
+    margin-top: 0;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .scrolling-text-container {
+        font-size: 1.2em;
+        padding: 6px 0;
+    }
+    .envelope img {
+        width: 80px;
+    }
+    .letter-paper {
+        max-width: 90%;
+        padding: 30px;
+        font-size: 1.2em;
+    }
+    .close-button {
+        font-size: 1.8em;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scrolling-text-container {
+        font-size: 1em;
+        padding: 5px 0;
+    }
+    .envelope img {
+        width: 60px;
+    }
+    .letter-paper {
+        padding: 20px;
+        font-size: 1.1em;
+    }
+    .close-button {
+        font-size: 1.6em;
+    }
+    main {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+/* Comentários para personalização */
+/*
+Para personalizar o texto da carta, edite o conteúdo dentro das tags <p> no arquivo index.html, dentro da div com a classe 'letter-paper'.
+
+Para personalizar o texto rolante, edite o conteúdo dentro das tags <span> nos elementos com classe 'scrolling-text' no arquivo index.html (tanto no header quanto no footer).
+
+Para mudar as fontes, altere os valores de 'font-family' neste arquivo CSS e certifique-se de que as fontes estão linkadas no <head> do index.html (via Google Fonts ou localmente).
+
+Para mudar as cores, altere os valores hexadecimais (ex: #fff0f5) ou rgba (ex: rgba(255, 182, 193, 0.8)) neste arquivo CSS.
+*/
+
+
+
+
+/* Estilos para Recursos Opcionais */
+
+/* Botão de Música */
+#toggleMusic {
+    position: fixed;
+    bottom: 70px; /* Acima do rodapé */
+    right: 20px;
+    padding: 8px 12px;
+    background-color: rgba(255, 182, 193, 0.9); /* Rosa claro */
+    color: #5d3a3a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 0.9em;
+    z-index: 1500; /* Acima do texto rolante, abaixo do modal */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+#toggleMusic:hover {
+    background-color: rgba(255, 160, 173, 0.9);
+}
+
+/* Animação de Corações Caindo */
+.heart {
+    position: fixed;
+    top: -5vh; /* Começa um pouco acima da tela */
+    color: #ff7999; /* Cor rosa/vermelho para os corações */
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear forwards; /* 'forwards' mantém o estado final */
+    z-index: 999; /* Abaixo do header/footer/modal/botão */
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg); /* Cai até um pouco abaixo da tela e gira */
+    }
+}
+
