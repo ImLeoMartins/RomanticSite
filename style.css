@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif; /* Fonte padrão fallback */
-    background: linear-gradient(to bottom, #fff0f5, #ffffff); /* Gradiente suave de Rosa Lavanda para Branco */
+    background: linear-gradient(to bottom, #E6E6FA, #ffffff); /* Gradiente suave de Rosa Lavanda para Branco */
     display: flex;
     justify-content: center;
     align-items: center;
